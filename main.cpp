@@ -2,30 +2,20 @@
 
 int main()
 {
-	LinkedList<int> list;
+	StackList stack;
 	for (int i = 0; i < 10; i++)
 	{
-		if (i <= 4)
-			list.AddToHead(5 - i);
-		else if (i > 4)
-			list.AddToTail(i + 1);
+		stack.push(10 - i);
 	}
-	cout << "List: " << endl;
-	list.Show();
+	cout << "Top element: " << stack.top() << endl;
+	stack.pop();
 	cout << endl;
-	list.AddAtPos(100, 5);
-	cout << "List after adding 100 at position 5: " << endl;
-	list.Show();
+	cout << "Stack after popping" << endl;
+	stack.display();
 	cout << endl;
-	int result = list.FindNodePos(100);
-	cout << "Position of 100: " << result << endl;
+	cout << "Size of stack: " << stack.size() << endl;
 	cout << endl;
-	list.ChangeNodesByValues(100, 200);
-	cout << "List after changing 100 to 200: " << endl;
-	list.Show();
-	cout << endl;
-	list.DeleteAtPos(5);
-	list.ReverseList();
-	list.Show();
+	bool variable = stack.isEmpty();
+	cout << "It is " << boolalpha << variable << " that stack is empty" << endl;
 	return 0;
 }
