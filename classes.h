@@ -14,14 +14,14 @@ public:
 	{
 		head = NULL;
 	}
-	bool isEmpty()
+	bool isEmpty() const
 	{
 		if (head == NULL)
 			return true;
 		else
 			return false;
 	}
-	int top()
+	int top() const
 	{
 		bool variable = isEmpty();
 		if (variable)
@@ -49,7 +49,7 @@ public:
 		head = head->next;
 		delete temp;
 	}
-	int size()
+	int size() const
 	{
 		Node* temp = head;
 		int count = 0;
@@ -60,7 +60,7 @@ public:
 		}
 		return count;
 	}
-	void display()
+	void display() const
 	{
 		Node* temp = head;
 		while (temp != NULL)
@@ -69,5 +69,102 @@ public:
 			temp = temp->next;
 		}
 		cout << endl;
+	}
+	void clear()
+	{
+		while (!isEmpty())
+		{
+			pop();
+		}
+	}
+	Node* copyFunc()
+	{
+		if (isEmpty()) {
+			return nullptr;
+		}
+		StackList newStack;
+		Node* temp = head;
+		while (temp != nullptr) {
+			newStack.push(temp->data);
+			temp = temp->next;
+		}
+		StackList finalStack;
+		Node* newTemp = newStack.head;
+		while (newTemp != nullptr) {
+			finalStack.push(newTemp->data);
+			newTemp = newTemp->next;
+		}
+		return finalStack.head;
+	}
+	StackList& operator=(const StackList& other) {
+		if (this == &other) {
+			return *this;
+		}
+
+		clear();
+
+		Node* temp = other.head;
+		StackList reverseStack;
+
+		while (temp != nullptr) {
+			reverseStack.push(temp->data);
+			temp = temp->next;
+		}
+
+		Node* reverseTemp = reverseStack.head;
+		while (reverseTemp != nullptr) {
+			push(reverseTemp->data);
+			reverseTemp = reverseTemp->next;
+		}
+
+		return *this;
+	}
+	StackList operator+(const StackList& other) const {
+		StackList newStack;
+		Node* temp = head;
+		while (temp != nullptr) {
+			newStack.push(temp->data);
+			temp = temp->next;
+		}
+		temp = other.head;
+		while (temp != nullptr) {
+			newStack.push(temp->data);
+			temp = temp->next;
+		}
+		StackList finalStack;
+		Node* newTemp = newStack.head;
+		while (newTemp != nullptr) {
+			finalStack.push(newTemp->data);
+			newTemp = newTemp->next;
+		}
+
+		return finalStack;
+	}
+	StackList operator*(const StackList& other) const {
+		StackList newStack;
+
+		Node* temp1 = head;
+		while (temp1 != nullptr) {
+			Node* temp2 = other.head;
+			while (temp2 != nullptr) {
+				if (temp1->data == temp2->data) {
+					newStack.push(temp1->data);
+					break;
+				}
+				temp2 = temp2->next;
+			}
+			temp1 = temp1->next;
+		}
+		StackList finalStack;
+		Node* newTemp = newStack.head;
+		while (newTemp != nullptr) {
+			finalStack.push(newTemp->data);
+			newTemp = newTemp->next;
+		}
+		return finalStack;
+	}
+	~StackList()
+	{
+		clear();
 	}
 };
