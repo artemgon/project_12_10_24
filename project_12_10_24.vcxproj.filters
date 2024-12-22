@@ -4,24 +4,27 @@
     <Filter Include="Main">
       <UniqueIdentifier>{36822983-55ed-4367-9faa-d9df5ae0e49b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Libs">
-      <UniqueIdentifier>{718ac91a-45c5-4d78-8dfe-e251b516f551}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes">
+    <Filter Include="Structures">
       <UniqueIdentifier>{ac9c3fe2-3b78-4ed4-8215-079e437871ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loggers">
+      <UniqueIdentifier>{718ac91a-45c5-4d78-8dfe-e251b516f551}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Loggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="libs.h">
-      <Filter>Libs</Filter>
+    <ClInclude Include="loggers.h">
+      <Filter>Loggers</Filter>
     </ClInclude>
-    <ClInclude Include="classes.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="structs.h">
+      <Filter>Structures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
